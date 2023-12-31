@@ -1,6 +1,6 @@
+import json
 import sys
 import traceback
-
 from flask import Flask, request, jsonify
 
 from main import get_tiles
@@ -20,16 +20,20 @@ def get_exception_traceback(exception):
 
 @app.errorhandler(Exception)
 def handle_exception(e):
-    return jsonify({
+    res = {
         "status_code": 500,
         "error_message": str(e),
         "traceback": get_exception_traceback(e)
-    }), 500
+    }
+    print(json.dumps(res))
+    return jsonify(res), 500
 
 
 @app.route('/')
 def hello_world():
-    return {"msg": "Hello World!"}
+    res = {"msg": "Hello World!"}
+    print(json.dumps(res))
+    return jsonify(res), 200
 
 
 @app.route('/tiles', methods=['POST'])
@@ -39,9 +43,11 @@ async def tiles():
 
     tiles_data = await get_tiles(email, password)
 
-    return jsonify({
+    res = {
         "tiles": tiles_data
-    })
+    }
+    print(json.dumps(res))
+    return jsonify(res), 200
 
 
 if __name__ == '__main__':
