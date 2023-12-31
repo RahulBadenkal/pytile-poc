@@ -19,5 +19,4 @@ async def get_tiles(email: str, password: str) -> List[Any]:
 
 
 if __name__ == "__main__":
-    response = asyncio.run(get_tiles("rahulbadenkal@gmail.com", "rahul@4900"))
-    print(response)
+    pass
