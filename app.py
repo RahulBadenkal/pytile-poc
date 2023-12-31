@@ -38,6 +38,10 @@ def hello_world():
 
 @app.route('/tiles', methods=['POST'])
 async def tiles():
+    print("form:", request.form)
+    print("email:", request.form.get("email"))
+    print("password:", request.form.get("password"))
+
     email = request.form.get('email')
     password = request.form.get('password')
 
