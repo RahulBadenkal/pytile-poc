@@ -23,7 +23,7 @@ def handle_exception(e):
     res = {
         "status_code": 500,
         "error_message": str(e),
-        "traceback": get_exception_traceback(e)
+        # "traceback": get_exception_traceback(e)
     }
     print(json.dumps(res))
     return jsonify(res), 500
